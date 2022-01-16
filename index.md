@@ -19,11 +19,13 @@ npm i @ryanbekhen/cryptkhen # npm package manager
 
 Load module to project:
 
-```typescript & javascript
+```typescript
 // In Typescript
 import { Cryptkhen } from '@ryanbekhen/cryptkhen';
 const cryptkhen: Cryptkhen = new Cryptkhen();
+```
 
+```javascript
 // In Javascript
 const { Cryptkhen } = require("@ryanbekhen/cryptkhen");
 const cryptkhen = new Cryptkhen();
@@ -37,10 +39,12 @@ const { publicKey, privateKey } = cryptkhen.generateKeypair(2048);
 
 Encrypt or Decrypt without passphrase:
 
-```typescript & javascript
+```typescript
 // Encrypt
 const encryptText = cryptkhen.encrypt('Hello World!', publicKey);
+```
 
+```javascript
 // Decrypt
 const decrypt = cryptkhen.decrypt(encryptText, privateKey);
 ```
@@ -49,7 +53,7 @@ const decrypt = cryptkhen.decrypt(encryptText, privateKey);
 
 Encrypt or Decrypt using passphrase:
 
-```typescript & javascript
+```typescript
 const { publicKey, privateKey } = cryptkhen.generateKeypair(2048, passphrase);
 
 // Encrypt
