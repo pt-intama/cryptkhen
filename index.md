@@ -1,37 +1,70 @@
-## Welcome to GitHub Pages
+# CRYPTKHEN
 
-You can use the [editor on GitHub](https://github.com/ryanbekhen/cryptkhen/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![npm version](https://badge.fury.io/js/%40ryanbekhen%2Fcryptkhen.svg)](https://badge.fury.io/js/%40ryanbekhen%2Fcryptkhen)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Features
 
-### Markdown
+Cryptkhen library is a simple security signature module for encrypted data with reference from Node.js
+[crypto module](https://nodejs.org/api/crypto.html).
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+* Generate Key Pair
+* Encrypt plain text using private key or public key RSA
+* Decrypt plain text using private key or public key RSA
 
-```markdown
-Syntax highlighted code block
+## Installing
 
-# Header 1
-## Header 2
-### Header 3
+```shell script
+yarn add @ryanbekhen/cryptkhen # yarn package manager
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+npm i @ryanbekhen/cryptkhen # npm package manager
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+> Requires nodejs >= 10.23.1
 
-### Jekyll Themes
+## Example Code
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/ryanbekhen/cryptkhen/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Load module to project:
 
-### Support or Contact
+```typescript & javascript
+// In Typescript
+import { Cryptkhen } from '@ryanbekhen/cryptkhen';
+const cryptkhen: Cryptkhen = new Cryptkhen();
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+// In Javascript
+const { Cryptkhen } = require("@ryanbekhen/cryptkhen");
+const cryptkhen = new Cryptkhen();
+```
+
+Generate RSA Key Pair:
+
+```typescript
+const { publicKey, privateKey } = cryptkhen.generateKeypair(2048);
+```
+
+Encrypt or Decrypt without passphrase:
+
+```typescript & javascript
+// Encrypt
+const encryptText = cryptkhen.encrypt('Hello World!', publicKey);
+
+// Decrypt
+const decrypt = cryptkhen.decrypt(encryptText, privateKey);
+```
+
+> Note: If you encrypt using a public key, you must decrypt it using the private key and vice versa.
+
+Encrypt or Decrypt using passphrase:
+
+```typescript & javascript
+const { publicKey, privateKey } = cryptkhen.generateKeypair(2048, passphrase);
+
+// Encrypt
+const encryptText = cryptkhen.encrypt('Hello World!', publicKey);
+const decrypt = cryptkhen.decrypt(encryptText, privateKey, passphrase);
+```
+> Note: Passphrase is entered into the encrypt or decrypt function parameter if the pemKey is privateKey not publicKey.
+
+## Contributing
+
+Questions, comments, bug reports, and pull requests are all welcome.
