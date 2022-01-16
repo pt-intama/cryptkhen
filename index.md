@@ -1,10 +1,3 @@
-# CRYPTKHEN
-
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![npm version](https://badge.fury.io/js/%40ryanbekhen%2Fcryptkhen.svg)](https://badge.fury.io/js/%40ryanbekhen%2Fcryptkhen)
-
-## Features
-
 Cryptkhen library is a simple security signature module for encrypted data with reference from Node.js
 [crypto module](https://nodejs.org/api/crypto.html).
 
@@ -14,7 +7,7 @@ Cryptkhen library is a simple security signature module for encrypted data with 
 
 ## Installing
 
-```shell script
+```shell
 yarn add @ryanbekhen/cryptkhen # yarn package manager
 
 npm i @ryanbekhen/cryptkhen # npm package manager
